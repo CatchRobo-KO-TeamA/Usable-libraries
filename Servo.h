@@ -13,6 +13,7 @@ class Servo
     float dig_to_pulse(float);
     float pulse_to_dig(float);
     float nowdig;
+    
     public:
     Servo(PwmOut&,float,float,float);
     void Servo_Move_Absolute(float);//速度はいいのでx度の場所に回ってほしい

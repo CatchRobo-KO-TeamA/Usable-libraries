@@ -5,6 +5,7 @@
 Servo::Servo(PwmOut& _servo,float _minwidth,float _maxwidth,float _maxspeed=60)
 :servo_pwm(_servo),min_pulsewidth_ms(_minwidth),max_pulsewidth_ms(_maxwidth),operatingspeed(_maxspeed)
 {
+    servo_pwm.period_us(20000);
     this->Servo_Move(0);
     this->nowdig=0;
 }
@@ -20,8 +21,7 @@ float pulse_to_dig(float pulse)
 }
 
 void Servo_Move_Absolute(float dig)
-{
-    servo_pwm.period_us(20000);
+{ 
     servo_pwm.pulsewidth_ms(dig_to_pulse(dig));
     nowdig = dig;
 }
@@ -42,7 +42,7 @@ void Servo_Move_Absolute(float dig,float speed)
     {
         speed=-1*operatingspeed;
     }
-    servo_pwm.period_us(20000);
+    
     float cnt = 0;
     while(1)
     {
